@@ -69,7 +69,7 @@ async def process_paper(fname, txt_dir, outputs_dir, prompt_versions, num_sample
     total_cost = {}
     sys_prompt = create_sys_prompts.prompts()
 
-    # Step1: Summarize methods
+    # Summarize methods
     print(f"\n# Summarizing methods for {fname}..")
     user_prompt = create_user_prompts.summarize_methods(paper_text, v=prompt_versions["sum_met"])
     response_json = json.loads(await ask_gpt4_async(sys_prompt, user_prompt))
@@ -80,7 +80,7 @@ async def process_paper(fname, txt_dir, outputs_dir, prompt_versions, num_sample
     cost = token_cost(n_input_tokens, n_output_tokens)
     total_cost["sum_met"] = cost
     
-    # Step2: Create initial knowledge graph conditioned on full paper.
+    # Step 1: Create initial knowledge graph conditioned on full paper.
     print(f"\n# Creating initial knowledge graph for {fname}..")
     kg_creator = create_user_prompts.KnowledgeGraphCreator(paper_text)
     user_prompt = kg_creator.create_initial_kg(v=prompt_versions["kg_init"])
@@ -92,10 +92,10 @@ async def process_paper(fname, txt_dir, outputs_dir, prompt_versions, num_sample
     outputs["knowledge_graph"] = response_content["knowledge_graph"]
     total_cost["res_to_kg"] = cost
 
-    # Step3-5: Convert KG to text, identify semantic groups, and permute KGs
+    # Step 2-5: Convert KG to text, identify semantic groups, and permute KGs
     # For now, we only proceed with papers have 1 experiment.
     if has_n_experiments(outputs["knowledge_graph"], num_experiments=1):
-        # Step3: Convert original KG to text (per experiment)
+        # Step 2: Convert original KG to text (per experiment)
         print(f"\n# Converting knowledge graph to text for {fname}..")
         outputs["results"] = {}
         n_input_tokens = 0
@@ -113,7 +113,7 @@ async def process_paper(fname, txt_dir, outputs_dir, prompt_versions, num_sample
         cost = token_cost(n_input_tokens, n_output_tokens)
         total_cost["kg_to_text"] = cost
 
-        # Step4: Identify semantic groups
+        # Step 3: Identify semantic groups
         print(f"\n# Identifying semantic groups for {fname}..")
         user_prompt = kg_creator.identify_semantic_groups(
             outputs["knowledge_graph"], 
@@ -127,7 +127,7 @@ async def process_paper(fname, txt_dir, outputs_dir, prompt_versions, num_sample
         cost = token_cost(n_input_tokens, n_output_tokens)
         total_cost["kg_to_semantic_groups"] = cost
 
-        # Step5: Create permuted knowledge graphs
+        # Step 4: Create permuted knowledge graphs
         print(f"\n# Creating permuted knowledge graphs for {fname}..")
         knowledge_graph_permutations, node_swaps_tracker, triple_deviation_pct \
             = permute_knowledge_graph.create_permutations(
@@ -138,7 +138,7 @@ async def process_paper(fname, txt_dir, outputs_dir, prompt_versions, num_sample
         outputs["node_swaps_tracker"] = node_swaps_tracker
         outputs["triple_deviation_pct"] = triple_deviation_pct
 
-        # Step6: Convert permuted KGs to text (per experiment and per permutation)
+        # Step 5: Convert permuted KGs to text (per experiment and per permutation)
         print(f"\n# Converting permuted knowledge graphs to text for {fname}..")
         outputs["results_permutations"] = {}
         n_input_tokens_kg_to_text = 0
