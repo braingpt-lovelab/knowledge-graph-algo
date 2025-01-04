@@ -3,10 +3,10 @@
 ## Overview
 The current approach relies on prompting strong LLMs (e.g., GPT-4o) for deriving, manipulating, and generating possible knowledge graphs of given experiments. This approach follows the key steps below. Each step, except Step 4, involves prompting LLMs to perform some tasks (see `prompts/` for more details). Knowledge graph permutation is done without a LLM but using a deterministic function (see [Details](#details)).
 
-* Step 1 - Initial Knowledge Graph Creation: extracts a structured knowledge graph from the original paper text using `KnowledgeGraphCreator.create_initial_kg`.
-* Step 2 - Knowledge Graph to Text: converts the original knowledge graph of an experiment into descriptive text via `KnowledgeGraphCreator.convert_kg_to_text_single_experiment`.
-* Step 3 - Semantic Group Identification: clusters related nodes in the knowledge graph into semantic groups with `KnowledgeGraphCreator.identify_semantic_groups`.
-* Step 4 - Knowledge Graph Permutations: generates alternative knowledge graph structures using `graph.permute_knowledge_graph.create_permutations`.
+* Step 1 - Initial Knowledge Graph Creation: extracts a structured knowledge graph from the original paper text using [`create_initial_kg`](prompts/create_user_prompts.py#L99).
+* Step 2 - Knowledge Graph to Text: converts the original knowledge graph of an experiment into descriptive text via [`convert_kg_to_text_single_experiment`](prompts/create_user_prompts.py#L197).
+* Step 3 - Semantic Group Identification: clusters related nodes in the knowledge graph into semantic groups with [`identify_semantic_groups`](prompts/create_user_prompts.py#L149).
+* Step 4 - Knowledge Graph Permutations: generates alternative knowledge graph structures using [`create_permutations`](graphs/permute_knowledge_graph.py#L127)
 * Step 5 - Permuted Knowledge Graph to Text: converts sampled permutations into alternative descriptive texts, leveraging the original results for consistency.
 
 ## Quickstart
