@@ -21,6 +21,11 @@ git clone git@github.com:don-tpanic/knowledge-graph-algo.git
 conda env create -f environment.yml
 ```
 
+### Setup OpenAI API key
+Create `.env` file in root directory of this repo, and insert the following per line
+<br>`AZURE_OPENAI_API_KEY=<API_KEY>`<br>
+`AZURE_OPENAI_ENDPOINT=<ENDPOINT>`
+
 ### Usage example:
 1. Save a paper (pdf) in `data/pdf_articles/<paper_name>.pdf`
 2. Run `python utils/pdf2txt.py` which will convert all pdf files to txt format, saved in `data/txt_articles/<paper_name>.txt`
