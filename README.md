@@ -1,7 +1,7 @@
 # An example generating possible outcomes of experiments using a knowledge graph approach
 
-## Knowledge graph approach overview
-The current approach relies on prompting strong LLMs (e.g., GPT-4o) for deriving, manipulating, and generating possible knowledge graphs of given experiments. This approach follows the key steps below. Each step, except Step 4, involves prompting LLMs to perform some tasks (see `prompts/` for more details). Knowledge graph permutation is done outside LLMs using a deterministic function.
+## Overview
+The current approach relies on prompting strong LLMs (e.g., GPT-4o) for deriving, manipulating, and generating possible knowledge graphs of given experiments. This approach follows the key steps below. Each step, except Step 4, involves prompting LLMs to perform some tasks (see `prompts/` for more details). Knowledge graph permutation is done without a LLM but using a deterministic function (see [Details](#details)).
 
 * Step 1 - Initial Knowledge Graph Creation: extracts a structured knowledge graph from the original paper text using `KnowledgeGraphCreator.create_initial_kg`.
 * Step 2 - Knowledge Graph to Text: converts the original knowledge graph of an experiment into descriptive text via `KnowledgeGraphCreator.convert_kg_to_text_single_experiment`.
@@ -22,7 +22,9 @@ conda env create -f environment.yml
 ```
 
 ### Usage example:
-Run knowledge graph possible results generation using default configuration on an example paper:
+1. Save a paper (pdf) in `data/pdf_articles/<paper_name>.pdf`
+2. Run `python utils/pdf2txt.py` which will convert all pdf files to txt format, saved in `data/txt_articles/<paper_name>.txt`
+3. Run the graph generation script using default configuration on existing papers saved in the above directory.
 ```
 python run_graph.py --sum_met 2 \
                     --kg_init 2 \
@@ -35,7 +37,7 @@ Explanation of parameters:
 * `--kg_sema`: the prompt version of creating semantic groups out of the original knowledge graph.
 * `--kg_txt`: the prompt version of converting knowledge graph to natural language.
 
-This is a very rudimentary approach of keeping track of prompt versions. For now, prompts are versioned in `prompts/create_sys_prompts.py` or `prompts/create_user_prompts.py`
+NOTE: This is a very rudimentary approach of keeping track of prompt versions. For now, prompts are versioned in `prompts/create_sys_prompts.py` or `prompts/create_user_prompts.py`
 
 ### Outputs:
 Run the above example will generate a json file for each paper (see `outputs/` for a concrete example). Key fields of the outputs are as follows.
@@ -51,3 +53,7 @@ Run the above example will generate a json file for each paper (see `outputs/` f
 | `results_permutations`      | Summarized results of different knowledge graph permutations for `experiment_1`.                            | `results_permutations['experiment_1']['<PERMUTATION_ID>'] = <RESULT_STRING>`                                                                    |                                                       |
 | `num_graph_permutations`    | Number of permutations generated for `experiment_1` and overall total.                                      | `num_graph_permutations['experiment_1'] = <NUM>`<br>`num_graph_permutations['total'] = <TOTAL_NUM>`                                               |                                       |
 | `token_cost`                | Cost metrics related to computational processing of methods, knowledge graph, and permutations.             | `token_cost['sum_met'] = <VALUE>`<br>`token_cost['res_to_kg'] = <VALUE>`<br>`token_cost['kg_to_text'] = <VALUE>`<br>`token_cost['total'] = <TOTAL_VALUE>` |                               |
+
+## Details
+### Knowledge graph permutation
+The graph permutation logic is implemented in `graphs/permute_knowledge_graph.py` and done by function `create_permutations`
