@@ -63,6 +63,12 @@ Run the above example will generate a json file for each paper (see `outputs/` f
 | `num_graph_permutations`    | Number of permutations generated for `experiment_1` and overall total.                                      | `num_graph_permutations['experiment_1'] = <NUM>`<br>`num_graph_permutations['total'] = <TOTAL_NUM>`                                               |                                       |
 | `token_cost`                | Cost metrics related to computational processing of methods, knowledge graph, and permutations.             | `token_cost['sum_met'] = <VALUE>`<br>`token_cost['res_to_kg'] = <VALUE>`<br>`token_cost['kg_to_text'] = <VALUE>`<br>`token_cost['total'] = <TOTAL_VALUE>` |                               |
 
+### Visualize knowledge graph in interactive mode
+Run the below will produce the knowledge graph extracted by an LLM from the original study of the example paper.
+```
+python viz_graph.py --json_file adam_robot
+```
+
 ## Details
 ### Knowledge graph permutation
 The graph permutation logic is implemented in `graphs/permute_knowledge_graph.py` with entry-point `create_permutations`
