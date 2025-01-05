@@ -1,0 +1,603 @@
+{
+    "methods": "The first experiment involved participants designing a robot by selecting attributes. They were then shown a second robot with different attributes. Both robots revealed patterns on their backs. Participants ranked their preference for these patterns, which were either unique to the robot they designed, shared, or unique to the non-designed robot. The study aimed to test if participants preferred novel patterns associated with their chosen robot. Data was collected from participants on Amazon Mechanical Turk, and preferences were analyzed using non-parametric statistical tests.",
+    "knowledge_graph": {
+        "experiment_1": {
+            "nodes": [
+                {
+                    "id": 1,
+                    "label": "Participants"
+                },
+                {
+                    "id": 2,
+                    "label": "Robot Design"
+                },
+                {
+                    "id": 3,
+                    "label": "Chosen Unique Pattern"
+                },
+                {
+                    "id": 4,
+                    "label": "Shared Pattern"
+                },
+                {
+                    "id": 5,
+                    "label": "Non-Chosen Pattern"
+                },
+                {
+                    "id": 6,
+                    "label": "Preference Ranking"
+                }
+            ],
+            "edges": [
+                {
+                    "source": 1,
+                    "target": 2,
+                    "relation": "designs"
+                },
+                {
+                    "source": 2,
+                    "target": 3,
+                    "relation": "reveals"
+                },
+                {
+                    "source": 2,
+                    "target": 4,
+                    "relation": "reveals"
+                },
+                {
+                    "source": 2,
+                    "target": 5,
+                    "relation": "reveals"
+                },
+                {
+                    "source": 1,
+                    "target": 6,
+                    "relation": "provides"
+                },
+                {
+                    "source": 3,
+                    "target": 6,
+                    "relation": "ranked_highest"
+                },
+                {
+                    "source": 4,
+                    "target": 6,
+                    "relation": "ranked_second"
+                },
+                {
+                    "source": 5,
+                    "target": 6,
+                    "relation": "ranked_lowest"
+                }
+            ]
+        }
+    },
+    "results": {
+        "experiment_1": "The study involved participants interacting with various robot designs, each revealing a unique, shared, and non-chosen pattern. Participants provided preference rankings for these patterns. The results showed that the unique pattern was ranked highest, the shared pattern was ranked second, and the non-chosen pattern was ranked lowest."
+    },
+    "semantic_groups": {
+        "experiment_1": {
+            "Human Elements": [
+                {
+                    "id": 1,
+                    "label": "Participants",
+                    "level": 1
+                }
+            ],
+            "Design Elements": [
+                {
+                    "id": 2,
+                    "label": "Robot Design",
+                    "level": 1
+                }
+            ],
+            "Pattern Categories": [
+                {
+                    "id": 3,
+                    "label": "Chosen Unique Pattern",
+                    "level": 2
+                },
+                {
+                    "id": 4,
+                    "label": "Shared Pattern",
+                    "level": 2
+                },
+                {
+                    "id": 5,
+                    "label": "Non-Chosen Pattern",
+                    "level": 2
+                }
+            ],
+            "Outcome Metrics": [
+                {
+                    "id": 6,
+                    "label": "Preference Ranking",
+                    "level": 1
+                }
+            ]
+        }
+    },
+    "knowledge_graph_permutations": {
+        "experiment_1": {
+            "2": {
+                "nodes": [
+                    {
+                        "id": 1,
+                        "label": "Participants"
+                    },
+                    {
+                        "id": 2,
+                        "label": "Robot Design"
+                    },
+                    {
+                        "id": 3,
+                        "label": "Chosen Unique Pattern"
+                    },
+                    {
+                        "id": 5,
+                        "label": "Shared Pattern"
+                    },
+                    {
+                        "id": 4,
+                        "label": "Non-Chosen Pattern"
+                    },
+                    {
+                        "id": 6,
+                        "label": "Preference Ranking"
+                    }
+                ],
+                "edges": [
+                    {
+                        "source": 1,
+                        "target": 2,
+                        "relation": "designs"
+                    },
+                    {
+                        "source": 2,
+                        "target": 3,
+                        "relation": "reveals"
+                    },
+                    {
+                        "source": 2,
+                        "target": 4,
+                        "relation": "reveals"
+                    },
+                    {
+                        "source": 2,
+                        "target": 5,
+                        "relation": "reveals"
+                    },
+                    {
+                        "source": 1,
+                        "target": 6,
+                        "relation": "provides"
+                    },
+                    {
+                        "source": 3,
+                        "target": 6,
+                        "relation": "ranked_highest"
+                    },
+                    {
+                        "source": 4,
+                        "target": 6,
+                        "relation": "ranked_second"
+                    },
+                    {
+                        "source": 5,
+                        "target": 6,
+                        "relation": "ranked_lowest"
+                    }
+                ]
+            },
+            "3": {
+                "nodes": [
+                    {
+                        "id": 1,
+                        "label": "Participants"
+                    },
+                    {
+                        "id": 2,
+                        "label": "Robot Design"
+                    },
+                    {
+                        "id": 4,
+                        "label": "Chosen Unique Pattern"
+                    },
+                    {
+                        "id": 3,
+                        "label": "Shared Pattern"
+                    },
+                    {
+                        "id": 5,
+                        "label": "Non-Chosen Pattern"
+                    },
+                    {
+                        "id": 6,
+                        "label": "Preference Ranking"
+                    }
+                ],
+                "edges": [
+                    {
+                        "source": 1,
+                        "target": 2,
+                        "relation": "designs"
+                    },
+                    {
+                        "source": 2,
+                        "target": 3,
+                        "relation": "reveals"
+                    },
+                    {
+                        "source": 2,
+                        "target": 4,
+                        "relation": "reveals"
+                    },
+                    {
+                        "source": 2,
+                        "target": 5,
+                        "relation": "reveals"
+                    },
+                    {
+                        "source": 1,
+                        "target": 6,
+                        "relation": "provides"
+                    },
+                    {
+                        "source": 3,
+                        "target": 6,
+                        "relation": "ranked_highest"
+                    },
+                    {
+                        "source": 4,
+                        "target": 6,
+                        "relation": "ranked_second"
+                    },
+                    {
+                        "source": 5,
+                        "target": 6,
+                        "relation": "ranked_lowest"
+                    }
+                ]
+            },
+            "4": {
+                "nodes": [
+                    {
+                        "id": 1,
+                        "label": "Participants"
+                    },
+                    {
+                        "id": 2,
+                        "label": "Robot Design"
+                    },
+                    {
+                        "id": 4,
+                        "label": "Chosen Unique Pattern"
+                    },
+                    {
+                        "id": 5,
+                        "label": "Shared Pattern"
+                    },
+                    {
+                        "id": 3,
+                        "label": "Non-Chosen Pattern"
+                    },
+                    {
+                        "id": 6,
+                        "label": "Preference Ranking"
+                    }
+                ],
+                "edges": [
+                    {
+                        "source": 1,
+                        "target": 2,
+                        "relation": "designs"
+                    },
+                    {
+                        "source": 2,
+                        "target": 3,
+                        "relation": "reveals"
+                    },
+                    {
+                        "source": 2,
+                        "target": 4,
+                        "relation": "reveals"
+                    },
+                    {
+                        "source": 2,
+                        "target": 5,
+                        "relation": "reveals"
+                    },
+                    {
+                        "source": 1,
+                        "target": 6,
+                        "relation": "provides"
+                    },
+                    {
+                        "source": 3,
+                        "target": 6,
+                        "relation": "ranked_highest"
+                    },
+                    {
+                        "source": 4,
+                        "target": 6,
+                        "relation": "ranked_second"
+                    },
+                    {
+                        "source": 5,
+                        "target": 6,
+                        "relation": "ranked_lowest"
+                    }
+                ]
+            },
+            "5": {
+                "nodes": [
+                    {
+                        "id": 1,
+                        "label": "Participants"
+                    },
+                    {
+                        "id": 2,
+                        "label": "Robot Design"
+                    },
+                    {
+                        "id": 5,
+                        "label": "Chosen Unique Pattern"
+                    },
+                    {
+                        "id": 3,
+                        "label": "Shared Pattern"
+                    },
+                    {
+                        "id": 4,
+                        "label": "Non-Chosen Pattern"
+                    },
+                    {
+                        "id": 6,
+                        "label": "Preference Ranking"
+                    }
+                ],
+                "edges": [
+                    {
+                        "source": 1,
+                        "target": 2,
+                        "relation": "designs"
+                    },
+                    {
+                        "source": 2,
+                        "target": 3,
+                        "relation": "reveals"
+                    },
+                    {
+                        "source": 2,
+                        "target": 4,
+                        "relation": "reveals"
+                    },
+                    {
+                        "source": 2,
+                        "target": 5,
+                        "relation": "reveals"
+                    },
+                    {
+                        "source": 1,
+                        "target": 6,
+                        "relation": "provides"
+                    },
+                    {
+                        "source": 3,
+                        "target": 6,
+                        "relation": "ranked_highest"
+                    },
+                    {
+                        "source": 4,
+                        "target": 6,
+                        "relation": "ranked_second"
+                    },
+                    {
+                        "source": 5,
+                        "target": 6,
+                        "relation": "ranked_lowest"
+                    }
+                ]
+            },
+            "6": {
+                "nodes": [
+                    {
+                        "id": 1,
+                        "label": "Participants"
+                    },
+                    {
+                        "id": 2,
+                        "label": "Robot Design"
+                    },
+                    {
+                        "id": 5,
+                        "label": "Chosen Unique Pattern"
+                    },
+                    {
+                        "id": 4,
+                        "label": "Shared Pattern"
+                    },
+                    {
+                        "id": 3,
+                        "label": "Non-Chosen Pattern"
+                    },
+                    {
+                        "id": 6,
+                        "label": "Preference Ranking"
+                    }
+                ],
+                "edges": [
+                    {
+                        "source": 1,
+                        "target": 2,
+                        "relation": "designs"
+                    },
+                    {
+                        "source": 2,
+                        "target": 3,
+                        "relation": "reveals"
+                    },
+                    {
+                        "source": 2,
+                        "target": 4,
+                        "relation": "reveals"
+                    },
+                    {
+                        "source": 2,
+                        "target": 5,
+                        "relation": "reveals"
+                    },
+                    {
+                        "source": 1,
+                        "target": 6,
+                        "relation": "provides"
+                    },
+                    {
+                        "source": 3,
+                        "target": 6,
+                        "relation": "ranked_highest"
+                    },
+                    {
+                        "source": 4,
+                        "target": 6,
+                        "relation": "ranked_second"
+                    },
+                    {
+                        "source": 5,
+                        "target": 6,
+                        "relation": "ranked_lowest"
+                    }
+                ]
+            }
+        }
+    },
+    "node_swaps_tracker": {
+        "experiment_1": {
+            "2": [
+                [
+                    "Pattern Categories",
+                    [
+                        [
+                            "Chosen Unique Pattern",
+                            "Chosen Unique Pattern"
+                        ],
+                        [
+                            "Shared Pattern",
+                            "Non-Chosen Pattern"
+                        ],
+                        [
+                            "Non-Chosen Pattern",
+                            "Shared Pattern"
+                        ]
+                    ]
+                ]
+            ],
+            "3": [
+                [
+                    "Pattern Categories",
+                    [
+                        [
+                            "Chosen Unique Pattern",
+                            "Non-Chosen Pattern"
+                        ],
+                        [
+                            "Shared Pattern",
+                            "Shared Pattern"
+                        ],
+                        [
+                            "Non-Chosen Pattern",
+                            "Chosen Unique Pattern"
+                        ]
+                    ]
+                ]
+            ],
+            "4": [
+                [
+                    "Pattern Categories",
+                    [
+                        [
+                            "Chosen Unique Pattern",
+                            "Shared Pattern"
+                        ],
+                        [
+                            "Shared Pattern",
+                            "Non-Chosen Pattern"
+                        ],
+                        [
+                            "Non-Chosen Pattern",
+                            "Chosen Unique Pattern"
+                        ]
+                    ]
+                ]
+            ],
+            "5": [
+                [
+                    "Pattern Categories",
+                    [
+                        [
+                            "Chosen Unique Pattern",
+                            "Non-Chosen Pattern"
+                        ],
+                        [
+                            "Shared Pattern",
+                            "Chosen Unique Pattern"
+                        ],
+                        [
+                            "Non-Chosen Pattern",
+                            "Shared Pattern"
+                        ]
+                    ]
+                ]
+            ],
+            "6": [
+                [
+                    "Pattern Categories",
+                    [
+                        [
+                            "Chosen Unique Pattern",
+                            "Shared Pattern"
+                        ],
+                        [
+                            "Shared Pattern",
+                            "Chosen Unique Pattern"
+                        ],
+                        [
+                            "Non-Chosen Pattern",
+                            "Non-Chosen Pattern"
+                        ]
+                    ]
+                ]
+            ]
+        }
+    },
+    "triple_deviation_pct": {
+        "experiment_1": {
+            "2": 0.25,
+            "3": 0.25,
+            "4": 0.375,
+            "5": 0.375,
+            "6": 0.25
+        }
+    },
+    "results_permutations": {
+        "experiment_1": {
+            "2": "The study involved participants evaluating different robot designs, each displaying a unique, shared, and non-chosen pattern. Participants provided preference rankings for these patterns. The findings indicated that the unique pattern received the highest preference ranking, the non-chosen pattern was ranked second, and the shared pattern was ranked lowest.",
+            "3": "In the study, participants interacted with various robot designs, each revealing a unique, shared, and non-chosen pattern. Participants provided preference rankings for these patterns. The results indicated that the non-chosen pattern was ranked highest, the shared pattern was ranked second, and the chosen unique pattern was ranked lowest.",
+            "4": "The study engaged participants with different robot designs, each displaying a unique, shared, and non-chosen pattern. Participants were asked to provide preference rankings for these patterns. The results indicated that the non-chosen pattern was ranked highest, the chosen unique pattern was ranked second, and the shared pattern was ranked lowest.",
+            "5": "The study involved participants who interacted with different robot designs, each displaying a unique, shared, and non-chosen pattern. Participants provided preference rankings for these patterns. The results indicated that the shared pattern was ranked highest, the non-chosen pattern was ranked second, and the unique pattern was ranked lowest.",
+            "6": "The study involved participants who interacted with different robot designs, each revealing a unique, shared, and non-chosen pattern. Participants provided preference rankings for these patterns. The results indicated that the shared pattern received the highest ranking, followed by the unique pattern, while the non-chosen pattern was ranked the lowest."
+        }
+    },
+    "num_graph_permutations": {
+        "experiment_1": 5,
+        "total": 5
+    },
+    "token_cost": {
+        "sum_met": 0.0487375,
+        "res_to_kg": 0.0508325,
+        "kg_to_text": 0.0017050000000000001,
+        "kg_to_semantic_groups": 0.003105,
+        "kg_permutes_to_text": 0.009525,
+        "total": 0.113905
+    }
+}
