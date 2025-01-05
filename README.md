@@ -1,4 +1,5 @@
 # An example generating possible outcomes of experiments using a knowledge graph approach
+![image](https://github.com/user-attachments/assets/c641ebfa-4638-4600-943b-9248d3b099c4)
 
 ## Intuition
 To obtain possible alternative results of an experiment, one idea is to construct a knowledge graph (KG) that captures key entities such as brain regions (as nodes) and relationships such as effects (as edges) of a study. Once we build a KG, we can alter it in several ways to detail a range of alternative results for a study. The current approach considers altering nodes (e.g., swapping brain regions in the conclusion, similar to a number of [BrainBench](https://github.com/braingpt-lovelab/brainbench_testcases/tree/89869dab3be1ec096dc38931ea33e43268c65d30) test cases). One key insight of the current implementation is to rely on LLMs to identify nodes from a KG that belongs to the same semantic group (e.g., brain regions, test treatments) and permute nodes within the same group.
