@@ -1,5 +1,18 @@
 # An example generating possible outcomes of experiments using a knowledge graph approach
-![image](https://github.com/user-attachments/assets/c641ebfa-4638-4600-943b-9248d3b099c4)
+
+## Table of content
+- [Intuition](#intuition)
+- [Approach Overview](#approach-overview)
+- [Quickstart](#quickstart)
+  - [Work with the Repo Locally](#work-with-the-repo-locally)
+  - [Install Dependencies](#install-dependencies)
+  - [Setup OpenAI API Key](#setup-openai-api-key)
+  - [Usage Example](#usage-example)
+  - [Outputs](#outputs)
+  - [Visualize Knowledge Graph in Interactive Mode](#visualize-knowledge-graph-in-interactive-mode)
+- [Details](#details)
+  - [Knowledge Graph Permutation](#knowledge-graph-permutation)
+
 
 ## Intuition
 To obtain possible alternative results of an experiment, one idea is to construct a knowledge graph (KG) that captures key entities such as brain regions (as nodes) and relationships such as effects (as edges) of a study. Once we build a KG, we can alter it in several ways to detail a range of alternative results for a study. The current approach considers altering nodes (e.g., swapping brain regions in the conclusion, similar to a number of [BrainBench](https://github.com/braingpt-lovelab/brainbench_testcases/tree/89869dab3be1ec096dc38931ea33e43268c65d30) test cases). One key insight of the current implementation is to rely on LLMs to identify nodes from a KG that belongs to the same semantic group (e.g., brain regions, test treatments) and permute nodes within the same group.
@@ -64,10 +77,12 @@ Run the above example will generate a json file for each paper (see `outputs/` f
 | `token_cost`                | Cost metrics related to computational processing of methods, knowledge graph, and permutations.             | `token_cost['sum_met'] = <VALUE>`<br>`token_cost['res_to_kg'] = <VALUE>`<br>`token_cost['kg_to_text'] = <VALUE>`<br>`token_cost['total'] = <TOTAL_VALUE>` |                               |
 
 ### Visualize knowledge graph in interactive mode
-Run the below will produce the knowledge graph extracted by an LLM from the original study of the example paper.
+Run the below script will produce the knowledge graph extracted by an LLM from the original study of an example paper. In other words, this script will plot the `knowledge_graph` object from the output json file of a paper.
 ```
 python viz_graph.py --json_file adam_robot
 ```
+The script will output something like below but as an interactive session.
+![image](https://github.com/user-attachments/assets/c641ebfa-4638-4600-943b-9248d3b099c4) Each node is represented using the format `<LABEL> (<SEMANTIC GRUOP>, <LEVEL>)`. For example, nodes `Shared Pattern (Pattern Categories, 2)` and `Non-chosen Pattern (Pattern Categories, 2)` belong to the same semantic group and are both level 2 nodes which means they could be swapped to create alternative results.
 
 ## Details
 ### Knowledge graph permutation
