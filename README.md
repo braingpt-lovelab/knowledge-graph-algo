@@ -1,6 +1,9 @@
 # An example generating possible outcomes of experiments using a knowledge graph approach
 
-## Overview
+## Intuition
+To obtain possible alternative results of an experiment, one idea is to construct a knowledge graph (KG) that captures key entities such as brain regions (as nodes) and relationships such as effects (as edges) of a study. Once we build a KG, we can alter it in several ways to detail a range of alternative results for a study. The current approach considers altering nodes (e.g., swapping brain regions in the conclusion, similar to a number of [BrainBench](https://github.com/braingpt-lovelab/brainbench_testcases/tree/89869dab3be1ec096dc38931ea33e43268c65d30) test cases). One key insight of the current implementation is to rely on LLMs to identify nodes from a KG that belongs to the same semantic group (e.g., brain regions, test treatments) and permute nodes within the same group.
+
+## Approach overview
 The current approach relies on prompting strong LLMs (e.g., GPT-4o) for deriving, manipulating, and generating possible knowledge graphs of given experiments. This approach follows the key steps below. Each step, except Step 4, involves prompting LLMs to perform some tasks (see `prompts/` for more details). Knowledge graph permutation is done without a LLM but using a deterministic function (see [Details](#details)).
 
 * Step 1 - Initial Knowledge Graph Creation: extracts a structured knowledge graph from the original paper text using [`create_initial_kg`](prompts/create_user_prompts.py#L99).
@@ -65,9 +68,9 @@ The graph permutation logic is implemented in `graphs/permute_knowledge_graph.py
 The current approach generates possible alternative outcomes by permuting nodes of the knowledge graph derived from the original results of the experiment. Below, I highlight the key steps and their associated code.
 1. Nodes on the original knowledge graph are classified into semantic groups and permutation is always performed among nodes within the same semantic group.
 2. For a given semantic group of nodes, we only permute the leaf nodes (i.e., nodes at the highest levels). Some semantic groups may not have nodes that can be permuted.
-   The relevant code is [here](https://github.com/braingpt-lovelab/knowledge-graph-algo/blob/main/graphs/permute_knowledge_graph.py#L151)
+   See relevant code [here](https://github.com/braingpt-lovelab/knowledge-graph-algo/blob/main/graphs/permute_knowledge_graph.py#L151)
 3. It is key to make sure we obtain all possible permutations of graphs (minus duplicates). Therefore, given multiple semantic groups of nodes, we must consider all combinations of semantic groups and all permutations of nodes within a group.
-    - We start with obtaining all possible combinations of semantic groups. The relevant code is [here](https://github.com/braingpt-lovelab/knowledge-graph-algo/blob/main/graphs/permute_knowledge_graph.py#L161-L165)
-    - For each combination of semantic groups, we can obtain all possible permutations of nodes for each group. The relevant code is [here](https://github.com/braingpt-lovelab/knowledge-graph-algo/blob/main/graphs/permute_knowledge_graph.py#L174-L180)
+    - We start with obtaining all possible combinations of semantic groups. See relevant code [here](https://github.com/braingpt-lovelab/knowledge-graph-algo/blob/main/graphs/permute_knowledge_graph.py#L161-L165)
+    - For each combination of semantic groups, we can obtain all possible permutations of nodes for each group. See relevant code [here](https://github.com/braingpt-lovelab/knowledge-graph-algo/blob/main/graphs/permute_knowledge_graph.py#L174-L180)
     - To produce a permuted graph, we iterate through the current combination of semantic groups and apply one possible permutation of nodes from each group. The relevant code is [here](https://github.com/braingpt-lovelab/knowledge-graph-algo/blob/main/graphs/permute_knowledge_graph.py#L182-L195)
-    - We then check if the resulting permuted graph is a duplicate to an existing graph, because sometimes, permuting nodes from two semantic groups could resulting in graphs that are isomorphic. The relevant code is [here](https://github.com/braingpt-lovelab/knowledge-graph-algo/blob/main/graphs/permute_knowledge_graph.py#L198)
+    - We then check if the resulting permuted graph is a duplicate to an existing graph, because sometimes, permuting nodes from two semantic groups could result in graphs that are isomorphic. See relevant code [here](https://github.com/braingpt-lovelab/knowledge-graph-algo/blob/main/graphs/permute_knowledge_graph.py#L198)
